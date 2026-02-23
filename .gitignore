@@ -1,0 +1,13 @@
+build/
+install/
+log/
+*.pyc
+__pycache__/
+.vscode/
+*.egg-info/
+*.log
+*.zip
+
+# 외부 라이브러리 (별도 git repo)
+src/moveit2_tutorials/
+src/mycobot_ros2/

@@ -1,0 +1,36 @@
+# planning_plugin은 launch 파일의 move_group 네임스페이스에서 설정
+# 여기서는 그룹별 플래너 설정만 작성
+
+planner_configs:
+  RRTConnectkConfigDefault:
+    type: geometric::RRTConnect
+    range: 0.0
+  RRTkConfigDefault:
+    type: geometric::RRT
+    range: 0.0
+    goal_bias: 0.05
+  ESTkConfigDefault:
+    type: geometric::EST
+    range: 0.0
+    goal_bias: 0.05
+  SBLkConfigDefault:
+    type: geometric::SBL
+    range: 0.0
+  PRMkConfigDefault:
+    type: geometric::PRM
+    max_nearest_neighbors: 10
+
+arm:
+  planner_configs:
+    - RRTConnectkConfigDefault
+    - RRTkConfigDefault
+    - ESTkConfigDefault
+  longest_valid_segment_fraction: 0.005
+  projection_evaluator: joints(joint1_to_base,joint2_to_joint1)
+  default_planner_config: RRTConnectkConfigDefault
+
+gripper:
+  planner_configs:
+    - RRTConnectkConfigDefault
+  longest_valid_segment_fraction: 0.01
+  default_planner_config: RRTConnectkConfigDefault
